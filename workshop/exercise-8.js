@@ -54,4 +54,13 @@ const jsGuru = arr => {
     return elem.skillLevels.javascript >= 6;
   })
 }
+
 console.log(jsGuru(staffMembers));
+
+
+//Stretch
+const languageGuru = (arr, language, level) => {
+  return arr.filter( elem => elem.skillLevels[language] >= level );
+}
+
+console.log(languageGuru(staffMembers, 'sql', 6));
