@@ -13,3 +13,10 @@ let mostPopularFood = [
   'parmesan chicken',
   'buffalo-flavored cauliflower',
 ];
+
+const printOrder = (arr) => {
+  const newArr = [...arr];
+  newArr.sort();
+  newArr.forEach( elem => console.log(`${elem} (${arr.indexOf(elem) + 1})`));
+}
+printOrder(mostPopularFood);
