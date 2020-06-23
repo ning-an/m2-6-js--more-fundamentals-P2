@@ -51,4 +51,10 @@ const staffMembers = [
 
 const getData = (arr, key) => {
   // return something
+  const res = [];
+  arr.forEach(elem => res.push(elem[key]));
+  return res;
 };
+
+console.log(getData(staffMembers, 'name'));
+console.log(getData(staffMembers, 'title'));
