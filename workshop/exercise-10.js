@@ -15,17 +15,17 @@ let inputData = {
   motherAge: 35,
   motherStatus: 'worried',
   motherSuperpower1: null,
-  motherSuperpower1: null,
+  motherSuperpower2: null,
   bestFriendName: 'Mike Wheeler',
   bestFriendAge: 9,
   bestFriendStatus: 'frenetic',
   bestFriendSuperpower1: null,
-  bestFriendSuperpower1: null,
+  bestFriendSuperpower2: null,
   girlfriendName: 'Eleven',
   girlfriendAge: 9,
   girlfriendStatus: 'angry',
   girlfriendSuperpower1: 'telepathy',
-  girlfriendSuperpower1: 'multiverse portal sealing',
+  girlfriendSuperpower2: 'multiverse portal sealing',
 };
 
 // We want a function that can transform it from that shape to this shape:
@@ -78,9 +78,49 @@ let inputData = {
 // For example, the main superpowers array should be:
 // ✅ ['can-blink-lights']
 // ⛔️ ['can-blink-lights', null]
+const superpowerCombine = (sp1, sp2) => {
+  const combinedSuperpower = [];
+  if (sp1) combinedSuperpower.push(sp1);
+  if (sp2) combinedSuperpower.push(sp2);
+  return combinedSuperpower;
+}
 
 function transformData(data) {
-  // Your code here
+  return {
+    'name': data.name,
+    'age': data.age,
+    'status': data.status,
+    'address': {
+      'streetAddress': data.address1,
+      'city': data.addressCity,
+      'state': data.addressState,
+      'country': data.addressCountry
+    },
+    'superpowers': superpowerCombine(data.superpower1, data.superpower2),
+    'relationships': [
+      {
+        'type': 'mother',
+        'name': data.motherName,
+        'age': data.motherAge,
+        'status': data.motherStatus,
+        'superpowers': superpowerCombine(data.motherSuperpower1, data.motherSuperpower2)
+      },
+      {
+        'type': 'bestfriend',
+        'name': data.bestFriendName,
+        'age': data.bestFriendAge,
+        'status': data.bestFriendStatus,
+        'superpowers': superpowerCombine(data.bestFriendSuperpower1, data.bestFriendSuperpower2)
+      },
+      {
+        'type': 'girlfriend',
+        'name': data.girlfriendName,
+        'age': data.girlfriendAge,
+        'status': data.girlfriendStatus,
+        'superpowers': superpowerCombine(data.girlfriendSuperpower1, data.girlfriendSuperpower2)
+      }
+    ]
+  }
 }
 
 // `JSON.stringify` is used to "pretty-print" the output, so that it's easy
