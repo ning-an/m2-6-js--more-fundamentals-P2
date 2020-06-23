@@ -48,3 +48,10 @@ const staffMembers = [
     },
   },
 ];
+
+const jsGuru = arr => {
+  return arr.filter( elem => {
+    return elem.skillLevels.javascript >= 6;
+  })
+}
+console.log(jsGuru(staffMembers));
